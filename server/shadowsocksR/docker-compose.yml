@@ -1,0 +1,29 @@
+version: "2.1"
+
+services:
+  ssr_server0:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports: 
+      - 65300:65300
+    environment:
+      - PASSWORD=IStartedAnAmazingServer
+      - METHOD=aes-256-cfb
+      - PROTOCOL=auth_aes128_md5
+      - PROTOCOLPARAM=32
+      - OBFS=tls1.2_ticket_auth_compatible
+      - TIMEOUT=500
+  ssr_server1:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports: 
+      - 65301:65300
+    environment:
+      - PASSWORD=IStartedAnAmazingServer
+      - METHOD=aes-256-cfb
+      - PROTOCOL=auth_aes128_md5
+      - PROTOCOLPARAM=32
+      - OBFS=tls1.2_ticket_auth_compatible
+      - TIMEOUT=500
