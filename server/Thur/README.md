@@ -5,8 +5,8 @@
 Just do this:
 
 ```bash
-docker-compose build
-docker-compose up -d
+docker-compose --compatibility build
+docker-compose --compatibility up -d
 ```
 
 ## Install docker-compose
