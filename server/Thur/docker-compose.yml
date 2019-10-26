@@ -13,7 +13,7 @@ services:
       - METHOD=rc4-md5
       - TIMEOUT=500
     deploy:
-      replicas: 10
+      replicas: 3
   ssr_thur:
     build:
       context: .
@@ -28,4 +28,4 @@ services:
       - OBFS=http_post
       - TIMEOUT=500
     deploy:
-      replicas: 10
+      replicas: 3
