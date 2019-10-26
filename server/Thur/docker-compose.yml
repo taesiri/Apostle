@@ -11,8 +11,6 @@ services:
       - PASSWORD=IServerDude
       - METHOD=rc4-md5
       - TIMEOUT=500
-    deploy:
-      replicas: 3
   ssr_thur:
     build:
       context: .
@@ -26,5 +24,3 @@ services:
       - PROTOCOLPARAM=32
       - OBFS=http_post
       - TIMEOUT=500
-    deploy:
-      replicas: 3
