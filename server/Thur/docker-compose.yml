@@ -1,42 +1,28 @@
 version: "2.1"
 
 services:
-  ss_thur0:
+  ss_thur:
     build:
       context: .
       dockerfile: ./SS/Dockerfile
     ports: 
-      - 80:80
+      - 80+:80
     environment:
       - PASSWORD=IServerDude
       - METHOD=rc4-md5
-      - TIMEOUT=1500
-  ss_thur1:
-    build:
-      context: .
-      dockerfile: ./SS/Dockerfile
-    ports: 
-      - 81:80
-    environment:
-      - PASSWORD=IServerDude
-      - METHOD=rc4-md5
-      - TIMEOUT=1500
-  ss_thur2:
-    build:
-      context: .
-      dockerfile: ./SS/Dockerfile
-    ports: 
-      - 79:80
-    environment:
-      - PASSWORD=IServerDude
-      - METHOD=rc4-md5
-      - TIMEOUT=1500
-  ssr_server0:
+      - TIMEOUT=500
+    deploy:
+      replicas: 5
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 10
+  ssr_thur:
     build:
       context: .
       dockerfile: ./SSR/Dockerfile
     ports: 
-      - 443:65300
+      - 443+:65300
     environment:
       - PASSWORD=IServerDude
       - METHOD=aes-256-cfb
@@ -44,29 +30,9 @@ services:
       - PROTOCOLPARAM=32
       - OBFS=http_post
       - TIMEOUT=500
-  ssr_server1:
-    build:
-      context: .
-      dockerfile: ./SSR/Dockerfile
-    ports: 
-      - 53:65300
-    environment:
-      - PASSWORD=IServerDude
-      - METHOD=aes-256-cfb
-      - PROTOCOL=auth_chain_a
-      - PROTOCOLPARAM=32
-      - OBFS=http_post
-      - TIMEOUT=500
-  ssr_server1:
-    build:
-      context: .
-      dockerfile: ./SSR/Dockerfile
-    ports: 
-      - 55:65300
-    environment:
-      - PASSWORD=IServerDude
-      - METHOD=aes-256-cfb
-      - PROTOCOL=auth_chain_a
-      - PROTOCOLPARAM=32
-      - OBFS=http_post
-      - TIMEOUT=500
+    deploy:
+      replicas: 5
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 10
