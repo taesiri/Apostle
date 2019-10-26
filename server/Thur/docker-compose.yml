@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: ./SS/Dockerfile
     ports: 
-      - 80+:80
+      - 80-90:80
     environment:
       - PASSWORD=IServerDude
       - METHOD=rc4-md5
@@ -21,7 +21,7 @@ services:
       context: .
       dockerfile: ./SSR/Dockerfile
     ports: 
-      - 443+:65300
+      - 443-453:65300
     environment:
       - PASSWORD=IServerDude
       - METHOD=aes-256-cfb
