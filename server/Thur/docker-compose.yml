@@ -1,4 +1,4 @@
-version: "2.1"
+version: "3.0"
 
 services:
   ss_thur:
@@ -6,13 +6,12 @@ services:
       context: .
       dockerfile: ./SS/Dockerfile
     ports: 
-      - 80:80
+      - 80+:80
     environment:
       - PASSWORD=IServerDude
       - METHOD=rc4-md5
       - TIMEOUT=500
     deploy:
-      replicas: 5
       restart_policy:
         condition: on-failure
         delay: 5s
@@ -22,7 +21,7 @@ services:
       context: .
       dockerfile: ./SSR/Dockerfile
     ports: 
-      - 443:65300
+      - 443+:65300
     environment:
       - PASSWORD=IServerDude
       - METHOD=aes-256-cfb
